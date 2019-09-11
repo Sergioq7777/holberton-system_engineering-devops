@@ -1,1 +1,2 @@
-#!/bin/bash 
+#!/bin/bash
+sudo rm /tmp/holberton/betty
