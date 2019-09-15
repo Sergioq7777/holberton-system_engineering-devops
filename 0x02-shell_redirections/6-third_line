@@ -1,2 +1,2 @@
 #!/bin/bash
-cat -n iacta | grep '^ *6'
+head -n 6 iacta | tail -n 1
