@@ -1,0 +1,2 @@
+#!/bin/bash
+grep -v '[[:punct:]]' /etc/ssh/sshd_config
