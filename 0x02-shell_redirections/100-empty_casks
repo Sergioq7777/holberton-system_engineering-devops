@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -laR | rev |cut -d " " -f1   | rev
+ls -lR | rev |cut -d " " -f1   | rev
