@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# This script is displaying list of items after the '-'
+
+for file in *
+do
+    echo "$file" | cut -d'-' -f2
+done
