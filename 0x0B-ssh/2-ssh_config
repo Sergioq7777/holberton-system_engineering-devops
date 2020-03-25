@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# client's file
+Host *
+    HostName 
+    User ubuntu
+    IdentityFile ~/.ssh/holberton
+    PasswordAuthentication no
