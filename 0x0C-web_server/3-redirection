@@ -4,6 +4,6 @@
 apt-get -y update
 apt-get -y install nginx
 ufw allow 'Nginx HTTP'
-echo "Holberton School" > /var/www/html/index.nginx-debian.html
-sed -i "s/server_name _;/server_name _;\n\trewrite ^\/redirect_me https:\/\/youtube.com permanent;/" /etc/nginx/sites-available/default
+echo "Holberton School for the win!" > /var/www/html/index.nginx-debian.html
+sudo sed -i "/^\tlocation \// i\ \tlocation /redirect_me {\n\t\treturn 301 https://virteip.tech;\n\t}" /etc/nginx/sites-enabled/default
 service nginx start
