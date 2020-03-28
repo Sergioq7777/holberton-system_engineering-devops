@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
-# Sets up nginx web server
-sudo apt-get -y update
-sudo apt-get -y install nginx
-echo "Ceci n'est pas une page" > /var/www/html/Error404/404_generic.html
-sudo sed -i "46i \\\terror_page 404 \/404_generic.html;\n\tlocation = \/404_generic.html {\n\t\troot \/var\/www\/html/Error404;\n\t\tinternal;\n\t}" /etc/nginx/sites-enabled/default
+#Create a 404 page
+apt-get -y update
+apt-get -y install nginx
+echo "Holberton School" > /var/www/html/index.nginx-debian.html
+echo "Ceci n'est pas une page" > /usr/share/nginx/html/custom_404.html
+commands="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4 permanent;"
+errorpage="\n\terror_page 404 \/custom_404.html;\n\tlocation = \/custom_404.html {\n\troot \/usr\/share\/nginx\/html;\n\tinternal;}"
+sed -i "s/server_name _;/$commands$errorpage/" /etc/nginx/sites-available/default
 service nginx start
