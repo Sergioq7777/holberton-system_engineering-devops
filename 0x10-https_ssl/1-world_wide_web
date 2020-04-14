@@ -1,11 +1,15 @@
 #!/usr/bin/env bash
 # Digs domain subdomains
-if [ $# -eq 1 ]
+sub_domain=(www lb-01 web-01 web-02)
+if [ "$#" -eq 1 ]
 then
-	list_domains="www.$1 lb-01.$1 web-01.$1 web-02.$1"
-else
-	list_domains="$2.$1"
+    for i in "${sub_domain[@]}"
+    do
+	dig $i."$1" | grep -A1 'ANSWER SECTION:' | tail -n1 |
+	awk -vvar="$i" '{print "The subdomain " var " is a " $4 " record and points to " $5}'
+    done
+elif [ "$#" -eq 2 ]
+then
+    dig "$2"."$1" | grep -A1 'ANSWER SECTION:' | tail -n1 |
+	awk -vvar="$2" '{print "The subdomain " var " is a " $4 " record and points to " $5}'
 fi
-part_a="The subdomain"
-
-dig $list_domains | awk -v part_b="is a A record and points to" -v part_a="The subdomain" '/ANSWER SECTION:/ {getline; split($0,a,"."); print( part_a " " a[1] " "part_b " " $5"")}'
