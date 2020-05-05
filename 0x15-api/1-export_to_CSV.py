@@ -5,21 +5,22 @@ import csv
 
 """to export data in the CSV format.
 """
+import csv
+import requests
+import sys
+
 if __name__ == "__main__":
-    parameters_t = (('userId', sys.argv[1]),)
-    to_dos = requests.get(
-        'https://jsonplaceholder.typicode.com/todos',
-        params=parameters_t)
-    to_dos_j = to_dos.json()
 
-    user = requests.get(
-        'https://jsonplaceholder.typicode.com/users/{}'.format(sys.argv[1]))
-    user_j = user.json()
-    user_name = user_j['name']
+    employee_id = sys.argv[1]
+    employee = requests.get('https://jsonplaceholder.typicode.com/users/{}'
+                            .format(employee_id)).json()
+    num_task = requests.get('https://jsonplaceholder.typicode.com/todos',
+                            params={'userId': employee_id}).json()
 
-    with open('{}.csv'.format(sys.argv[1]), mode='w') as csv_file:
-        cvs_writer = csv.writer(csv_file, quoting=csv.QUOTE_ALL)
-        for to_write in to_dos_j:
-            cvs_writer.writerow([int(sys.argv[1]), user_name,
-                                to_write['completed'],
-                                 to_write['title']])
+    employee_name = employee.get('name')
+
+    with open('{}.csv'.format(employee_id), 'w', newline='') as f:
+        writer2csv = csv.writer(f, quoting=csv.QUOTE_ALL)
+        for ind in num_task:
+            writer2csv.writerow([employee_id, employee.get(
+                'username'), ind.get('completed'), ind.get('title')])
