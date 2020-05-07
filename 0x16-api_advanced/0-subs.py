@@ -1,12 +1,11 @@
 #!/usr/bin/python3
-"""# subs of subreddit"""
+"""queries the Reddit API and returns the number of subscribers """
 import requests
 import sys
 
 
 def number_of_subscribers(subreddit):
-    """# of
-    subscribers"""
+    """Return the number og subcribers"""
     try:
         head = {"User-Agent": "Teslothorcha"}
         redit_req = requests.get(
