@@ -7,7 +7,7 @@ import sys
 def number_of_subscribers(subreddit):
     """Return the number og subcribers"""
     try:
-        head = {"User-Agent": "Teslothorcha"}
+        head = {"User-Agent": "sergioq7777"}
         redit_req = requests.get(
             'https://api.reddit.com/r/{}/about'.format(subreddit),
             headers=head)
@@ -17,4 +17,4 @@ def number_of_subscribers(subreddit):
         num_subs = info['data']['subscribers']
         return num_subs
     except:
-        return 0
+        return 
