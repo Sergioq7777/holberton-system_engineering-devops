@@ -1,4 +1,3 @@
-
 #!/usr/bin/python3
 """ the Reddit API and prints the titles of the first 10 """
 import requests
