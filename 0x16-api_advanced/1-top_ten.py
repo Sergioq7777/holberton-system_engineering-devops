@@ -6,7 +6,7 @@ import sys
 
 
 def top_ten(subreddit):
-    """queries the Reddit API and prints the titles of the first 10 hot posts"""
+    """queries the Reddit API and prints the titles posts"""
     try:
         head = {"User-Agent": "Sergioq7777"}
         redit_req = requests.get(
