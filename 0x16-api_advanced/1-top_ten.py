@@ -1,6 +1,6 @@
 
 #!/usr/bin/python3
-"""# subs of subreddit"""
+""" the Reddit API and prints the titles of the first 10 """
 import requests
 import sys
 
