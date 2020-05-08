@@ -23,4 +23,4 @@ def recurse(subreddit, hot_list=[], e_q_s=None):
             recurse(subreddit, hot_list, el_que_sigue)
         return hot_list
     except:
-        return 
+        return None
