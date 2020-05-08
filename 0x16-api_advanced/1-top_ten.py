@@ -20,4 +20,4 @@ def top_ten(subreddit):
         for out in num_hot:
             print(out['data']['title'])
     except:
-        print()
+        print(None)
